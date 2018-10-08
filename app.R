@@ -348,8 +348,8 @@ ui <- fluidPage(theme = shinytheme("cosmo"),
                                  h4("Biomedical Research Institute of Granada", br(),
                                     "Non‐Communicable and Cancer Epidemiology Group (ibs.Granada)", br(),
                                     "University of Granada, Granada, Spain."),
+                                 h4("Biomedical Network Research Centers of Epidemiology and Public Health (CIBERESP), ISCIII, Madrid, Spain"),
                                  h4("London School of Hygiene and Tropical Medicine, London, UK"),
-                                 h4("Biomedical Network Research Centers of Epidemiology and Public Health (CIBERESP), ISCII, Madrid, Spain"),
                                  tags$i(h5("miguel.luque.easp at juntadeandalucia.es"))
                           )
                  ),
@@ -362,7 +362,7 @@ ui <- fluidPage(theme = shinytheme("cosmo"),
                                     "Non‐Communicable and Cancer Epidemiology Group (ibs.Granada)", br(),
                                     "University of Granada."),
                                  h4("Granada Cancer Registry, Andalusian School of Public Health"),
-                                 h4("Biomedical Network Research Centers of Epidemiology and Public Health (CIBERESP), ISCII, Madrid, Spain"),
+                                 h4("Biomedical Network Research Centers of Epidemiology and Public Health (CIBERESP), ISCIII, Madrid, Spain"),
                                  tags$i(h5("daniel.redondo.easp at juntadeandalucia.es"))
                           )
                  ),
@@ -375,7 +375,7 @@ ui <- fluidPage(theme = shinytheme("cosmo"),
                                     "Non‐Communicable and Cancer Epidemiology Group (ibs.Granada)", br(),
                                     "University of Granada, Granada, Spain."),
                                  h4("Granada Cancer Registry, Andalusian School of Public Health"),
-                                 h4("Biomedical Network Research Centers of Epidemiology and Public Health (CIBERESP)"),
+                                 h4("Biomedical Network Research Centers of Epidemiology and Public Health (CIBERESP), ISCIII, Madrid, Spain"),
                                  tags$i(h5("miguel.rodriguez.barranco.easp at juntadeandalucia.es"))
                           )
                  ),
@@ -411,7 +411,7 @@ ui <- fluidPage(theme = shinytheme("cosmo"),
                                     "Non‐Communicable and Cancer Epidemiology Group (ibs.Granada)", br(),
                                     "University of Granada, Granada, Spain."),
                                  h4("Granada Cancer Registry, Andalusian School of Public Health, Granada, Spain"),
-                                 h4("Biomedical Network Research Centers of Epidemiology and Public Health (CIBERESP), ISCII, Madrid, Spain"),
+                                 h4("Biomedical Network Research Centers of Epidemiology and Public Health (CIBERESP), ISCIII, Madrid, Spain"),
                                  tags$i(h5("mariajose.sanchez.easp at juntadeandalucia.es"))
                           )
                  ),
@@ -423,7 +423,8 @@ ui <- fluidPage(theme = shinytheme("cosmo"),
                  tags$b("Funding information"), br(),
                  "Carlos III Institute of Health, Grant/Award Number: CP17/00206 and the Andalusian Department of Health, Grant Number: PI-0152/2017.", br(), br(),
                  fluidRow(column(5, img(src = "logofeder.png", width = "75%")),
-                          column(5, img(src = "logoibs.png", width = "75%"))
+                          column(5, img(src = "logoibs.png", width = "75%"),
+                                 img(src = "logo_ciber.png", width = "50%"))
                           )
                  )
       )
