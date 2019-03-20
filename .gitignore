@@ -4,4 +4,6 @@
 **.Ruserdata
 **.csv
 **.Rproj.user
+**.RData
+Shiny_database.RData
 .Rproj.user
