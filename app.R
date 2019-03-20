@@ -29,7 +29,7 @@ url <- "https://twitter.com/intent/tweet?url=http://watzilei.com/shiny/CoMCoR/&v
 
 # ui ------------------------------
 ui <- fluidPage(theme = shinytheme("cosmo"),
-      titlePanel(tags$b("Pattern of Comorbidities and Associated Risk Factors among Colorectal Cancer Patients in Spain: CoMCoR study."),
+      titlePanel(tags$b("Pattern of Comorbidities and Multimorbidity among Colorectal Cancer Patients in Spain: CoMCoR study."),
                  windowTitle = "CoMCoR"),
       
       tabsetPanel(
@@ -40,7 +40,7 @@ ui <- fluidPage(theme = shinytheme("cosmo"),
                  fluidRow(
                      column(7, wellPanel(tags$b("Cite as:"),br(),
                            "Miguel Angel Luque-Fernandez, Daniel Redondo Sánchez et al., 2018.", br(),
-                           tags$i("Pattern of Comorbidities and Associated Risk Factors among Colorectal Cancer Patients in Spain: CoMCoR study."), br(),
+                           tags$i("Pattern of Comorbidities and Multimorbidity among Colorectal Cancer Patients in Spain: CoMCoR study."), br(),
                            "Biomedical Research Institute of Granada, Non‐Communicable and Cancer Epidemiology Group (ibs.Granada), University of Granada.")),
                      column(5, wellPanel(tags$b("E-mail us"),  "with your comments:", br(),
                                          tags$i("miguel.luque.easp at juntadeandalucia.es")
@@ -59,7 +59,7 @@ ui <- fluidPage(theme = shinytheme("cosmo"),
                      column(7, 
                             h3(tags$b("Background:")),
                             "Cancer accounted for 8.8 million deaths globally in 2015 and was the second most common cause of death in the world.[1] Colorectal (CRC) cancer is the
-                            second most frequently diagnosed cancer in Spain for both men and women with over 41,441 new cases in 2015.[2] Despite the high prevalence
+                            second most frequently diagnosed cancer in Spain with 44,937 newly diagnosed cases in 2019.[2] Despite the high prevalence
                             of colorectal cancer in the elderly population, the inclusion of this cohort in clinical trials is disproportionately low. Besides clinical
                             and pathological characteristics of the tumour, also general health status and comorbidities can influence cancer treatment and outcomes.
                             Comorbidity and multimorbidity are increasingly seen as a problem of the elderly.[3, 4] A number of studies have been performed analysing the influence of age and comorbidity on cancer outcomes,
@@ -70,22 +70,21 @@ ui <- fluidPage(theme = shinytheme("cosmo"),
                             two population cancer registries and patient’s medical records. We defined comorbidity as the existence of a long-term health condition or disorder 
                             in the presence of cancer, whereas multimorbidity refers to the existence of two or more comorbid conditions [5, 6]. We described the frequency and distribution
                             of comorbidities and multimorbidity by patient, tumor and healthcare factors using radar-plots and heatmaps. Then, we used generalized linear models 
-                            to characterize the risk factors associated with the presence of the most prevalent comorbidities plus dementia and multimorbidity. We used forest plots 
+                            to characterize the factors associated with the presence of the most prevalent comorbidities plus dementia and multimorbidity. We used forest plots 
                             to display the results.",
                             
                             h3(tags$b("Results:")),
                             "The most common comorbidities were diabetes (23.6%), chronic obstructive pulmonary disease (17.2%) and congestive heart failure (14.5%). Dementia 
                             was the most common comorbidity among older patients (75+ years) showing a higher proportion (30%) of late cancer diagnosis (stage IV) and hospital 
-                            emergency admission (33%). CRC with dementia had nearly three times higher risk of not being offered surgery treatment (RR: 2.8, 95%CI: 1.6, 5.0). 
+                            emergency admission (33%). CRC with dementia had nearly three times higher prevalence of not receiving surgery treatment (RR: 2.8, 95%CI: 1.6, 5.0). 
                             Older (+75 years) obese male and current smoker, late surgery after cancer diagnosis (more than 60 days) and not being offered surgical treatment after 
-                            were associated with a higher risk of multimorbidity. Patients with multimorbidity (2 or more comorbidities) aged 75+ years showed a higher prevalence 
+                            were associated with a higher prevalence of multimorbidity. Patients with multimorbidity (2 or more comorbidities) aged 75+ years showed a higher prevalence 
                             of surgery the same day or the day after hospital emergency admission (37%).",
                             
                             h3(tags$b("Conclusions:")),
-                            "CoMCoR found a relevant pattern in the distribution and frequency of comorbidities and multimorbidity among CRC patients in Spain mostly associated 
-                            with dementia, advanced age and surgical treatment. CRC frequency of late diagnosis (stage IV) among patients with dementia and the high proportion 
+                            "CoMCoR found a relevant pattern in the distribution and frequency of comorbidities and multimorbidity among CRC patients in Spain. CRC frequency of late diagnosis (stage IV) among patients with dementia and the high proportion 
                             of older patients not being offered surgical treatment are important findings that require policy actions. All the results from CoMCoR are made open-source 
-                            available in a web application which is meant to serve as a scientific tool supporting evidence-based policymaking aiming to improve comorbid CRC patients' outcomes. ",
+                            available in a web application which is meant to serve as a scientific tool supporting evidence-based policymaking aiming to improve comorbid CRC patients' outcomes.",
                             
                             hr(),
                             
@@ -291,8 +290,8 @@ ui <- fluidPage(theme = shinytheme("cosmo"),
 #####                  ),
         
         # Tab 4 - Forest plot ---------------------------
-        tabPanel(h4(tags$b("Comorbidities' risk factors: forest plots")),
-                 h3(tags$b("Comorbidities' risk factors: forest plots")),
+        tabPanel(h4(tags$b("Comorbidities' Prevalence Ratios: forest plots")),
+                 h3(tags$b("Comorbidities' Prevalence Ratios: forest plots")),
                  sidebarLayout(
                    sidebarPanel(width = 4,
                      selectInput(inputId = "forest.com",
@@ -313,7 +312,7 @@ ui <- fluidPage(theme = shinytheme("cosmo"),
                                              "Healthcare factors" = "hf"),
                                  selected = "pf"
                                  ),
-                     checkboxInput("adjusted", "Adjust Risk Ratio by sex and age", value = FALSE)
+                     checkboxInput("adjusted", "Adjusted Prevalence Ratio by sex and age", value = FALSE)
                    ),
                    mainPanel(imageOutput("forestplot", height = "75%"))
                  )
@@ -326,7 +325,7 @@ ui <- fluidPage(theme = shinytheme("cosmo"),
                  fluidRow(
                      column(7, wellPanel(tags$b("Cite as:"),br(),
                                          "Miguel Angel Luque-Fernandez, Daniel Redondo Sánchez et al., 2018.", br(),
-                                         tags$i("Pattern of Comorbidities and Associated Risk Factors among Colorectal Cancer Patients in Spain: CoMCoR study."), br(),
+                                         tags$i("Pattern of Comorbidities and Multimorbidity among Colorectal Cancer Patients in Spain: CoMCoR study."), br(),
                                          "Biomedical Research Institute of Granada, Non‐Communicable and Cancer Epidemiology Group (ibs.Granada), University of Granada.")),
                      column(5, wellPanel(tags$b("E-mail us"),  "with your comments:", br(),
                                          tags$i("miguel.luque.easp at juntadeandalucia.es")
@@ -544,8 +543,8 @@ server <- function(input, output) {
                        "Emergency"  = com_per("Hospital", 2, topfive = input$eleccion_com)
                      ),
                      e_surgery = list(
-                       "Done"   = com_per("cirugia", 1, topfive = input$eleccion_com),
-                       "Not done"  = com_per("cirugia", 2, topfive = input$eleccion_com)
+                       "Yes"   = com_per("cirugia", 1, topfive = input$eleccion_com),
+                       "No"  = com_per("cirugia", 2, topfive = input$eleccion_com)
                      ),
                      e_typesurgery = list(
                        "Major" = com_per("tipo_cirugia_radarplot", 1, topfive = input$eleccion_com),
