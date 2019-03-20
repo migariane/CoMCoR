@@ -59,7 +59,7 @@ ui <- fluidPage(theme = shinytheme("cosmo"),
                      column(7, 
                             h3(tags$b("Background:")),
                             "Cancer accounted for 8.8 million deaths globally in 2015 and was the second most common cause of death in the world.[1] Colorectal (CRC) cancer is the
-                            second most frequently diagnosed cancer in Spain with 44,937 newly diagnosed cases in 2019.[2] Despite the high prevalence
+                            second most frequently diagnosed cancer in Spain with 44,937 estimated new CRC cases in 2019.[2] Despite the high prevalence
                             of colorectal cancer in the elderly population, the inclusion of this cohort in clinical trials is disproportionately low. Besides clinical
                             and pathological characteristics of the tumour, also general health status and comorbidities can influence cancer treatment and outcomes.
                             Comorbidity and multimorbidity are increasingly seen as a problem of the elderly.[3, 4] A number of studies have been performed analysing the influence of age and comorbidity on cancer outcomes,
