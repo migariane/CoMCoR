@@ -39,9 +39,13 @@ ui <- fluidPage(theme = shinytheme("cosmo"),
                  br(),
                  fluidRow(
                      column(7, wellPanel(tags$b("Cite as:"),br(),
-                           "Miguel Angel Luque-Fernandez, Daniel Redondo Sánchez et al., 2018.", br(),
-                           tags$i("Pattern of Comorbidities and Multimorbidity among Colorectal Cancer Patients in Spain: CoMCoR study."), br(),
-                           "Biomedical Research Institute of Granada, Non‐Communicable and Cancer Epidemiology Group (ibs.Granada), University of Granada.")),
+                                         tags$b("Multimorbidity by Patient and Tumor Factors and Time-to-Surgery Among Colorectal Cancer Patients in Spain: A Population-Based Study"),
+                                         br(),
+                                         tags$i("Miguel Angel Luque-Fernandez, Daniel Redondo-Sanchez, Shing Fung Lee, Miguel Rodríguez-Barranco, Mª Carmen Carmona-García, Rafael Marcos-Gragera, María José Sánchez"),
+                                         br(),
+                                         tags$b("Clinical Epidemiology"),
+                                         br(),
+                                         tags$a("DOI: 10.2147/CLEP.S229935", href="http://doi.org/10.2147/CLEP.S229935"))),
                      column(5, wellPanel(tags$b("E-mail us"),  "with your comments:", br(),
                                          tags$i("miguel.luque.easp at juntadeandalucia.es")
                                          ),
@@ -66,25 +70,23 @@ ui <- fluidPage(theme = shinytheme("cosmo"),
                             but little evidence is available regarding the frequency and distribuion of comorbidities and multimorbidity at a population level among colorectal cancer patients in Spain.",
                             
                             h3(tags$b("Methods:")),
-                            "We developed a population-based high-resolution cohort study, including all CRC incident cases diagnosed in 2011 (n= 1,061). Data were drawn from 
-                            two population cancer registries and patient’s medical records. We defined comorbidity as the existence of a long-term health condition or disorder 
+                            "We developed a population-based cross-sectional study including all CRC cases diagnosed in 2011 (n= 1,061) in two Spanish provinces (Granada and Girona). Data were drawn from 
+                            two population cancer registries and patient’s electronical health records. We defined comorbidity as the existence of a long-term health condition or disorder 
                             in the presence of cancer, whereas multimorbidity refers to the existence of two or more comorbid conditions [5, 6]. We described the frequency and distribution
-                            of comorbidities and multimorbidity by patient, tumor and healthcare factors using radar-plots and heatmaps. Then, we used generalized linear models 
-                            to characterize the factors associated with the presence of the most prevalent comorbidities plus dementia and multimorbidity. We used forest plots 
+                            of comorbidities and multimorbidity by patient and tumor factors using radar-plots and heatmaps. Then, we used generalized log-linear models 
+                            to characterize the factors associated with a higher prevalence of the most prevalent comorbidities plus dementia and multimorbidity at diagnosis. We used forest plots 
                             to display the results.",
                             
                             h3(tags$b("Results:")),
-                            "The most common comorbidities were diabetes (23.6%), chronic obstructive pulmonary disease (17.2%) and congestive heart failure (14.5%). Dementia 
-                            was the most common comorbidity among older patients (75+ years) showing a higher proportion (30%) of late cancer diagnosis (stage IV) and hospital 
-                            emergency admission (33%). CRC with dementia had nearly three times higher prevalence of not receiving surgery treatment (RR: 2.8, 95%CI: 1.6, 5.0). 
-                            Older (+75 years) obese male and current smoker, late surgery after cancer diagnosis (more than 60 days) and not being offered surgical treatment after 
-                            were associated with a higher prevalence of multimorbidity. Patients with multimorbidity (2 or more comorbidities) aged 75+ years showed a higher prevalence 
-                            of surgery the same day or the day after hospital emergency admission (37%).",
+                            "The most common comorbidities were diabetes (23.6%), chronic obstructive pulmonary disease (17.2%), and congestive heart failure (14.5%). Overall, there was a high proportion of CRC
+                            patients across all the comorbidities with an advanced stage at cancer diagnosis (stage III/IV). In contrast to other comorbidities, the prevalence of stage IV vs. stage I at diagnosis 
+                            among CRC patients with dementia was 40% higher (PR: 1.4; 95%CI: 0.5, 3.5). CRC patients with advanced age, restricted performance or disable, obese, and smokers, had a higher prevalence 
+                            of multimorbidity. For instance, current smokers had 2.7 times (95% CI: 1.6, 4.8) higher multimorbidity prevalence than non-smokers and obese CRC patients had 2.4 times (95% CI: 1.4, 4.0) 
+                            higher multimorbidity prevalence than CRC patients with a BMI <25 km/m2 at diagnosis.",
                             
                             h3(tags$b("Conclusions:")),
-                            "CoMCoR found a relevant pattern in the distribution and frequency of comorbidities and multimorbidity among CRC patients in Spain. CRC frequency of late diagnosis (stage IV) among patients with dementia and the high proportion 
-                            of older patients not being offered surgical treatment are important findings that require policy actions. All the results from CoMCoR are made open-source 
-                            available in a web application which is meant to serve as a scientific tool supporting evidence-based policymaking aiming to improve comorbid CRC patients' outcomes.",
+                            "We found a consistent pattern of factors associated with a higher prevalence of comorbidities and multimorbidity at diagnosis among colorectal cancer patients at diagnosis in Spain. 
+                            This pattern may add valuable insights for further etiological and preventive research and may help to identify patients at higher risk for poorer cancer outcomes and treatment.",
                             
                             hr(),
                             
@@ -111,6 +113,18 @@ ui <- fluidPage(theme = shinytheme("cosmo"),
                  )
                  
         ),
+        
+        # Tab 2 - Article -------------------------------
+        tabPanel(h4(tags$b("Article")), br(), br(),
+                 tags$b("Multimorbidity by Patient and Tumor Factors and Time-to-Surgery Among Colorectal Cancer Patients in Spain: A Population-Based Study"),
+                 br(),
+                 tags$i("Miguel Angel Luque-Fernandez, Daniel Redondo-Sanchez, Shing Fung Lee, Miguel Rodríguez-Barranco, Mª Carmen Carmona-García, Rafael Marcos-Gragera, María José Sánchez"),
+                 br(),
+                 tags$b("Clinical Epidemiology"),
+                 br(),
+                 tags$a("DOI: 10.2147/CLEP.S229935", href="http://doi.org/10.2147/CLEP.S229935"),
+                 br(), br(),
+                 uiOutput("article")),
                  
         # Tab 2 - Radar plots --------------------
         tabPanel(h4(tags$b("Pattern of comorbidities: radar plots")),
@@ -125,8 +139,8 @@ ui <- fluidPage(theme = shinytheme("cosmo"),
                                 selectInput(inputId = "by",
                                             label = h3("Results by:"),
                                             choices = c("Patient's factors" = "Patient",
-                                                        "Tumor factors" = "Tumor",
-                                                        "Healthcare factors" = "Healthcare"),
+                                                        "Tumor factors" = "Tumor"),
+                                                        #"Healthcare factors" = "Healthcare"),
                                             selected = "Patient"
                                             ),
                                 conditionalPanel("input.by == 'Patient'",{
@@ -149,25 +163,27 @@ ui <- fluidPage(theme = shinytheme("cosmo"),
                                                            "Stage" = "e_stage"),
                                                selected = "e_site"
                                   )
-                                }),
-                                conditionalPanel("input.by == 'Healthcare'",{
-                                  radioButtons(inputId = "healthcare",
-                                               label =  NULL,
-                                               choices = c("Type of hospital admission" = "e_hospital",
-                                                           "Surgery" = "e_surgery",
-                                                           "Type of surgery" = "e_typesurgery",
-                                                           "Time to surgery" = "e_timesurgery"),
-                                               selected = "e_hospital"
-                                  )
                                 })
+                                # ,
+                                # conditionalPanel("input.by == 'Healthcare'",{
+                                #   radioButtons(inputId = "healthcare",
+                                #                label =  NULL,
+                                #                choices = c("Type of hospital admission" = "e_hospital",
+                                #                            "Surgery" = "e_surgery",
+                                #                            "Type of surgery" = "e_typesurgery",
+                                #                            "Time to surgery" = "e_timesurgery"),
+                                #                selected = "e_hospital"
+                                #   )
+                                # })
                               
                    ),
                    mainPanel(
                      tags$div(tags$h4("Distribution (percentage) of comorbidities prevalence by factors selected in the sidebar menu"),
                               style = "text-align:center;"),
                      conditionalPanel("input.by == 'Patient'", chartJSRadarOutput("radarplot_patient", width = "450", height = "250")),
-                     conditionalPanel("input.by == 'Tumor'", chartJSRadarOutput("radarplot_tumor", width = "450", height = "250")),
-                     conditionalPanel("input.by == 'Healthcare'", chartJSRadarOutput("radarplot_healthcare", width = "450", height = "250"))
+                     conditionalPanel("input.by == 'Tumor'", chartJSRadarOutput("radarplot_tumor", width = "450", height = "250"))
+                     # ,
+                     # conditionalPanel("input.by == 'Healthcare'", chartJSRadarOutput("radarplot_healthcare", width = "450", height = "250"))
 
                      )
                    )
@@ -186,8 +202,8 @@ ui <- fluidPage(theme = shinytheme("cosmo"),
                                 selectInput(inputId = "h_by",
                                             label = h3("Results by:"),
                                             choices = c("Patient's factors" = "Patient",
-                                                        "Tumor factors" = "Tumor",
-                                                        "Healthcare factors" = "Healthcare"),
+                                                        "Tumor factors" = "Tumor"),
+                                                        #"Healthcare factors" = "Healthcare"),
                                             selected = "Patient"
                                 ),
                                 
@@ -212,16 +228,16 @@ ui <- fluidPage(theme = shinytheme("cosmo"),
                                                selected = "e_site"
                                   )
                                 }),
-                                conditionalPanel("input.h_by == 'Healthcare'",{
-                                  radioButtons(inputId = "h_healthcare",
-                                               label =  NULL,
-                                               choices = c("Type of hospital admission" = "e_hospital",
-                                                           "Surgery" = "e_surgery",
-                                                           "Type of surgery" = "e_typesurgery",
-                                                           "Time to surgery" = "e_timesurgery"),
-                                               selected = "e_hospital"
-                                  )
-                                }),
+                                # conditionalPanel("input.h_by == 'Healthcare'",{
+                                #   radioButtons(inputId = "h_healthcare",
+                                #                label =  NULL,
+                                #                choices = c("Type of hospital admission" = "e_hospital",
+                                #                            "Surgery" = "e_surgery",
+                                #                            "Type of surgery" = "e_typesurgery",
+                                #                            "Time to surgery" = "e_timesurgery"),
+                                #                selected = "e_hospital"
+                                #   )
+                                # }),
                                 
                                 # Legend
                                 wellPanel(h4(tags$b("Legend")),
@@ -244,8 +260,9 @@ ui <- fluidPage(theme = shinytheme("cosmo"),
                      tags$div(tags$h4("Prevalence of comorbidities by factors selected in the sidebar menu:"),
                               style = "text-align:center;"),
                      conditionalPanel("input.h_by == 'Patient'", plotOutput("heatmap_patient", width = "100%")),
-                     conditionalPanel("input.h_by == 'Tumor'", plotOutput("heatmap_tumor", width = "100%")),
-                     conditionalPanel("input.h_by == 'Healthcare'", plotOutput("heatmap_healthcare", width = "100%"))
+                     conditionalPanel("input.h_by == 'Tumor'", plotOutput("heatmap_tumor", width = "100%"))
+                     # ,
+                     # conditionalPanel("input.h_by == 'Healthcare'", plotOutput("heatmap_healthcare", width = "100%"))
                      
                    )
                  )
@@ -308,8 +325,8 @@ ui <- fluidPage(theme = shinytheme("cosmo"),
                      selectInput(inputId = "forest.fac",
                                  label = h3("Factors:"),
                                  choices = c("Patient's factors" = "pf",
-                                             "Tumor factors" = "tf",
-                                             "Healthcare factors" = "hf"),
+                                             "Tumor factors" = "tf"),
+                                             #"Healthcare factors" = "hf"),
                                  selected = "pf"
                                  ),
                      checkboxInput("adjusted", "Adjusted Prevalence Ratio by sex and age", value = FALSE)
@@ -324,9 +341,13 @@ ui <- fluidPage(theme = shinytheme("cosmo"),
                  br(),
                  fluidRow(
                      column(7, wellPanel(tags$b("Cite as:"),br(),
-                                         "Miguel Angel Luque-Fernandez, Daniel Redondo Sánchez et al., 2018.", br(),
-                                         tags$i("Pattern of Comorbidities and Multimorbidity among Colorectal Cancer Patients in Spain: CoMCoR study."), br(),
-                                         "Biomedical Research Institute of Granada, Non‐Communicable and Cancer Epidemiology Group (ibs.Granada), University of Granada.")),
+                                         tags$b("Multimorbidity by Patient and Tumor Factors and Time-to-Surgery Among Colorectal Cancer Patients in Spain: A Population-Based Study"),
+                                         br(),
+                                         tags$i("Miguel Angel Luque-Fernandez, Daniel Redondo-Sanchez, Shing Fung Lee, Miguel Rodríguez-Barranco, Mª Carmen Carmona-García, Rafael Marcos-Gragera, María José Sánchez"),
+                                         br(),
+                                         tags$b("Clinical Epidemiology"),
+                                         br(),
+                                         tags$a("DOI: 10.2147/CLEP.S229935", href = "http://doi.org/10.2147/CLEP.S229935"))),
                      column(5, wellPanel(tags$b("E-mail us"),  "with your comments:", br(),
                                          tags$i("miguel.luque.easp at juntadeandalucia.es")
                      ),
@@ -344,6 +365,7 @@ ui <- fluidPage(theme = shinytheme("cosmo"),
                  h3(tags$b("Authorship")),
                  fluidRow(column(2, img(src = "logo_MALF.png", width = "100px")),
                           column(10, h4(tags$b("Miguel Angel Luque-Fernandez")),
+                                 h4("ORCID: ", tags$a("https://orcid.org/0000-0001-6683-5164", href = "https://orcid.org/0000-0001-6683-5164", target="_blank")),
                                  h4("Biomedical Research Institute of Granada", br(),
                                     "Non‐Communicable and Cancer Epidemiology Group (ibs.Granada)", br(),
                                     "University of Granada, Granada, Spain."),
@@ -357,6 +379,7 @@ ui <- fluidPage(theme = shinytheme("cosmo"),
                  
                  fluidRow(column(2, img(src = "logo_DRS.png", width = "100px")),
                           column(10, h4(tags$b("Daniel Redondo Sánchez")),
+                                 h4("ORCID: ", tags$a("https://orcid.org/0000-0001-9986-915X", href = "https://orcid.org/0000-0001-9986-915X", target="_blank")),
                                  h4("Biomedical Research Institute of Granada", br(),
                                     "Non‐Communicable and Cancer Epidemiology Group (ibs.Granada)", br(),
                                     "University of Granada."),
@@ -367,9 +390,19 @@ ui <- fluidPage(theme = shinytheme("cosmo"),
                  ),
                  
                  hr(),
+                 
+                 fluidRow(column(2, img(src = "logo_SFL.jpg", width = "100px")),
+                          column(10, h4(tags$b("Shing Fung Lee")),
+                                 h4("Department of Clinical Oncology, Tuen Mun Hospital, New Territories West Cluster, Hospital Authority, Hong Kong"),
+                                 tags$i(h5("leesfm at ha.org.hk"))
+                          )
+                 ),
+                 
+                 hr(),
 
                  fluidRow(column(2, img(src = "logo_MRB.jpg", width = "100px")),
                           column(10, h4(tags$b("Miguel Rodríguez Barranco")),
+                                 h4("ORCID: ", tags$a("https://orcid.org/0000-0002-9972-9779", href = "https://orcid.org/0000-0002-9972-9779", target="_blank")),
                                  h4("Biomedical Research Institute of Granada", br(),
                                     "Non‐Communicable and Cancer Epidemiology Group (ibs.Granada)", br(),
                                     "University of Granada, Granada, Spain."),
@@ -383,6 +416,7 @@ ui <- fluidPage(theme = shinytheme("cosmo"),
                  
                  fluidRow(column(2, img(src = "logo_MCG.jpg", width = "100px")),
                           column(10, h4(tags$b("Mª Carmen Carmona-García")),
+                                 h4("ORCID: ", tags$a("https://orcid.org/0000-0002-4011-9474", href = "https://orcid.org/0000-0002-4011-9474", target="_blank")),
                                  h4("Catalan Institute of Oncology"), 
                                  h4("University Hospital Dr Josep Trueta of Girona", br(),
                                     "Descriptive Epidemiology, Genetics and Cancer Prevention of the Biomedical Research Institute of Girona"),
@@ -395,6 +429,7 @@ ui <- fluidPage(theme = shinytheme("cosmo"),
 
                  fluidRow(column(2, img(src = "logo_RMG.jpg", width = "100px")),
                           column(10, h4(tags$b("Rafael Marcos Gragera")),
+                                 h4("ORCID: ", tags$a("https://orcid.org/0000-0001-9824-3657", href = "https://orcid.org/0000-0001-9824-3657", target="_blank")),
                                  h4("Catalan Institute of Oncology", br(),
                                     "Descriptive Epidemiology, Genetics and Cancer Prevention of the Biomedical Research Institute of Girona"),
                                  h4("University of Girona, Girona, Spain"),
@@ -406,6 +441,7 @@ ui <- fluidPage(theme = shinytheme("cosmo"),
 
                  fluidRow(column(2, img(src = "logo_MJSP.jpg", width = "100px")),
                           column(10, h4(tags$b("María José Sánchez Pérez")),
+                                 h4("ORCID: ", tags$a("https://orcid.org/0000-0003-4817-0757", href = "https://orcid.org/0000-0003-4817-0757", target="_blank")),
                                  h4("Biomedical Research Institute of Granada", br(),
                                     "Non‐Communicable and Cancer Epidemiology Group (ibs.Granada)", br(),
                                     "University of Granada, Granada, Spain."),
@@ -536,35 +572,35 @@ server <- function(input, output) {
     
   })
   
-  output$radarplot_healthcare<-renderChartJSRadar({
-    scores <- switch(input$healthcare,
-                     e_hospital = list(
-                       "Planned"   = com_per("Hospital", 1, topfive = input$eleccion_com),
-                       "Emergency"  = com_per("Hospital", 2, topfive = input$eleccion_com)
-                     ),
-                     e_surgery = list(
-                       "Yes"   = com_per("cirugia", 1, topfive = input$eleccion_com),
-                       "No"  = com_per("cirugia", 2, topfive = input$eleccion_com)
-                     ),
-                     e_typesurgery = list(
-                       "Major" = com_per("tipo_cirugia_radarplot", 1, topfive = input$eleccion_com),
-                       "Minor"  = com_per("tipo_cirugia_radarplot", 2, topfive = input$eleccion_com)
-                     ),
-                     e_timesurgery = list(
-                       "0 days (emergency)" = com_per("tiempo_cirugia_cat", 1, topfive = input$eleccion_com),
-                       "1-13 days" = com_per("tiempo_cirugia_cat", 2, topfive = input$eleccion_com),
-                       "14-30 days" = com_per("tiempo_cirugia_cat", 3, topfive = input$eleccion_com),
-                       "31-59 days" = com_per("tiempo_cirugia_cat", 4, topfive = input$eleccion_com),
-                       ">59 days" = com_per("tiempo_cirugia_cat", 5, topfive = input$eleccion_com)
-                     )
-    )
-    
-    if(input$eleccion_com == FALSE) labs <- comorbilidades_labels
-    if(input$eleccion_com == TRUE) labs <- top5_labels
-    
-    chartJSRadar(scores = scores, labs = labs, labelSize = 18, showLegend = TRUE, maxScale = 100, colMatrix = grDevices::col2rgb(c("royalblue", "brown1", "chartreuse3", "darkgoldenrod1", "mediumorchid2")))
-    
-  })
+  # output$radarplot_healthcare<-renderChartJSRadar({
+  #   scores <- switch(input$healthcare,
+  #                    e_hospital = list(
+  #                      "Planned"   = com_per("Hospital", 1, topfive = input$eleccion_com),
+  #                      "Emergency"  = com_per("Hospital", 2, topfive = input$eleccion_com)
+  #                    ),
+  #                    e_surgery = list(
+  #                      "Yes"   = com_per("cirugia", 1, topfive = input$eleccion_com),
+  #                      "No"  = com_per("cirugia", 2, topfive = input$eleccion_com)
+  #                    ),
+  #                    e_typesurgery = list(
+  #                      "Major" = com_per("tipo_cirugia_radarplot", 1, topfive = input$eleccion_com),
+  #                      "Minor"  = com_per("tipo_cirugia_radarplot", 2, topfive = input$eleccion_com)
+  #                    ),
+  #                    e_timesurgery = list(
+  #                      "0 days (emergency)" = com_per("tiempo_cirugia_cat", 1, topfive = input$eleccion_com),
+  #                      "1-13 days" = com_per("tiempo_cirugia_cat", 2, topfive = input$eleccion_com),
+  #                      "14-30 days" = com_per("tiempo_cirugia_cat", 3, topfive = input$eleccion_com),
+  #                      "31-59 days" = com_per("tiempo_cirugia_cat", 4, topfive = input$eleccion_com),
+  #                      ">59 days" = com_per("tiempo_cirugia_cat", 5, topfive = input$eleccion_com)
+  #                    )
+  #   )
+  #   
+  #   if(input$eleccion_com == FALSE) labs <- comorbilidades_labels
+  #   if(input$eleccion_com == TRUE) labs <- top5_labels
+  #   
+  #   chartJSRadar(scores = scores, labs = labs, labelSize = 18, showLegend = TRUE, maxScale = 100, colMatrix = grDevices::col2rgb(c("royalblue", "brown1", "chartreuse3", "darkgoldenrod1", "mediumorchid2")))
+  #   
+  # })
   
   # Heatmaps ------------------
   output$heatmap_patient<-renderPlot({
@@ -772,7 +808,12 @@ output$forestplot <- renderImage({
   list(src = paste0(getwd(), "/www/forest_plot/", input$forest.com, "_", input$forest.fac, ajustado, ".svg"),
        contentType = 'image/svg+xml')
   }, deleteFile = FALSE)
-}
 
+# Article (PDF)
+output$article <- renderUI({
+    tags$iframe(style = "height : 700px; width : 100%", src = "Manuscript.pdf")
+})
+
+}
 
 shinyApp(ui = ui, server = server)
